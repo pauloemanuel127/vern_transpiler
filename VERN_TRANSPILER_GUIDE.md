@@ -58,6 +58,8 @@ O nosso transpilador segue uma arquitetura em pipeline. O código-fonte entra co
 **Responsável por:** Criar uma maneira de compilar diretamente o arquivo.c gerado para assim fazer a transpilação do codigo em vern diretamente para executavel.
 *  **Oque o responsavel precisa fazer:**
     **EM CONSTRUÇÃO**
+
+### Fase 7: Atualizar o README para documentar a sintax da linguagem - [FUTURO]
 ---
 
 ## 🛠️ Regras de Colaboração
