@@ -6,6 +6,7 @@
     */
 #ifndef PARSER_H
 #define PARSER_H
+#define MAX_COMANDOS 1000
 
 typedef enum {
     NUMBER_INT,
@@ -19,4 +20,10 @@ typedef struct {
     char text[200];
     COMPLETE_TOKEN type;
 } AST;
+
+extern AST arvore_sintatica[MAX_COMANDOS];
+extern int total_nos;
+
+void analisador_sintaxico(char *codigo);
+
 #endif
