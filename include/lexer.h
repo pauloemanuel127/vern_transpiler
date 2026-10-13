@@ -28,7 +28,7 @@ typedef enum {
  */
 typedef struct {
     int num; /*!< valor numerico da variavel, armazenado quando type = TOKEN_NUM */
-    char string[50]; /*!< texto literal quando type = TOKEN_TEXT */
+    char string[200]; /*!< texto literal quando type = TOKEN_TEXT */
     TOKEN_TYPE type; /*!< tipo do token, define sua funcionalidade no codigo já alterado */
 } TOKEN;
 
