@@ -70,6 +70,11 @@ PARSER_STATUS analisador_sintaxico(char *codigo) {
 
             strcpy(arvore_sintatica[total_nos].text, token_atual.string);
             //O gerador de codigo em C vai ter que iterar essa string em busca de %varname para no printf("text %d", varname);
+            token_atual = obter_proximo_token(codigo);
+
+            if(token_atual.type == TOKEN_EOF) return PARSER_ERROR_UNEXPECTED_EOF;
+            if(token_atual.type != TOKEN_EOL) return PARSER_ERROR_SINTAX;
+
             arvore_sintatica[total_nos].type = CONSOLE_TEXT;
             total_nos++;
         }
