@@ -12,25 +12,25 @@
  * @brief Tipos de saida para a função analisador sintaxico
  */
 typedef enum {
-    PARSER_SUCCESS = 0,
-    PARSER_ERROR_SINTAX,
-    PARSER_ERROR_UNEXPECTED_EOF,
+    PARSER_SUCCESS = 0, /*!< Indicador de sucesso da função */
+    PARSER_ERROR_SINTAX, /*!< Indicador de sintaxe  */
+    PARSER_ERROR_UNEXPECTED_EOF, /*!< Indicador de erro de EOF efora do momento esperado */
 } PARSER_STATUS;
 
 /**
  * @brief Token completo para a struct AST
  */
 typedef enum { //Util para o gerador de codigo em C, apagar quando o gerador tiver pronto
-    NUMBER_INT,
-    OPERATOR_INT,
-    CONSOLE_TEXT,
+    NUMBER_INT, /*!< Token que indica o tipo do ast como int */
+    OPERATOR_INT, /*!< Token que indica o tipo do ast como int, e avisa que ocorrerá uma operação aritimetica */
+    CONSOLE_TEXT, /*!< Token que indica o tipo do ast como mensagem de terminarl (printf()) */
 } COMPLETE_TOKEN;
 
 /**
  * @brief Estrutura responsavel por guardar todas as informações importantes dos tokens, une tudo em blocos maiores
  */
 typedef struct { //Vai ser utilizado para a geração em codigo em C, dá o varname, valores, textos e etc.
-    int valor_1;
+    int valor_1; /*!<  */
     int valor_2;
     char aritmetic_op;
     char var_name[50];
