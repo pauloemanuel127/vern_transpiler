@@ -30,12 +30,12 @@ typedef enum { //Util para o gerador de codigo em C, apagar quando o gerador tiv
  * @brief Estrutura responsavel por guardar todas as informações importantes dos tokens, une tudo em blocos maiores
  */
 typedef struct { //Vai ser utilizado para a geração em codigo em C, dá o varname, valores, textos e etc.
-    int valor_1; /*!<  */
-    int valor_2;
-    char aritmetic_op;
-    char var_name[50];
-    char text[200];
-    COMPLETE_TOKEN type;
+    int valor_1; /*!< Armazena o valor da variavel, se for variavel int comum todo o valor é armazenado aqui */
+    int valor_2; /*!< Armazena o segundo valor, que fará parte da operação  realizada*/
+    char aritmetic_op; /*!< armazena o operador aritmetico */
+    char var_name[50]; /*!< armazena o nome da variavel declarada */
+    char text[200]; /*!< armazena o texto que será exibido no terminal */
+    COMPLETE_TOKEN type; /*!< armazena o tipo de token que representa a estrutura ast */
 } AST;
 
 extern AST arvore_sintatica[MAX_COMANDOS]; /** Array que armazena os comandos AST */ //Base do gerador de codigo em C
