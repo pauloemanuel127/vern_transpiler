@@ -6,21 +6,30 @@
     */
 #ifndef PARSER_H
 #define PARSER_H
-#define MAX_COMANDOS 1000
+#define MAX_COMANDOS 1000 /** define o tamanho maximo de tamanhos reconhecidos */
 
+/**
+ * @brief Tipos de saida para a função analisador sintaxico
+ */
 typedef enum {
     PARSER_SUCCESS = 0,
     PARSER_ERROR_SINTAX,
     PARSER_ERROR_UNEXPECTED_EOF,
 } PARSER_STATUS;
 
-typedef enum {
+/**
+ * @brief Token completo para a struct AST
+ */
+typedef enum { //Util para o gerador de codigo em C, apagar quando o gerador tiver pronto
     NUMBER_INT,
     OPERATOR_INT,
     CONSOLE_TEXT,
 } COMPLETE_TOKEN;
 
-typedef struct {
+/**
+ * @brief Estrutura responsavel por guardar todas as informações importantes dos tokens, une tudo em blocos maiores
+ */
+typedef struct { //Vai ser utilizado para a geração em codigo em C, dá o varname, valores, textos e etc.
     int valor_1;
     int valor_2;
     char aritmetic_op;
@@ -29,9 +38,14 @@ typedef struct {
     COMPLETE_TOKEN type;
 } AST;
 
-extern AST arvore_sintatica[MAX_COMANDOS];
-extern int total_nos;
+extern AST arvore_sintatica[MAX_COMANDOS]; /** Array que armazena os comandos AST */ //Base do gerador de codigo em C
+extern int total_nos; /** representa quantidade de comandos feitos e serve para coordenar a organização do array */ //representa indiretamente a quantidade de comandos +1
 
+/**
+ * @brief Verifica se o codigo está seguindo o caminho correto, e cria as estruturas AST para o gerador de codigo em C
+ * @param codigo A string contendo todo o codigo fonte .vern
+ * @return Retorna o status do processo, sendo ele sucesso, erro de sintax ou erro de EOF inesperado
+ */
 PARSER_STATUS analisador_sintaxico(char *codigo);
 
 #endif
