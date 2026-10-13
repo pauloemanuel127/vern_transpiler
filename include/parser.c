@@ -1,7 +1,5 @@
 #include "parser.h"
 #include "lexer.h"
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 AST arvore_sintatica[MAX_COMANDOS];
@@ -63,6 +61,18 @@ PARSER_STATUS analisador_sintaxico(char *codigo) {
             }
         }
 
+        //VERIFICADOR DO PRINTF
+        if(token_atual.type == TOKEN_PRINT) {
+            token_atual = obter_proximo_token(codigo);
+
+            if(token_atual.type == TOKEN_EOF) return PARSER_ERROR_UNEXPECTED_EOF;
+            if(token_atual.type != TOKEN_TEXT) return PARSER_ERROR_SINTAX;
+
+            strcpy(arvore_sintatica[total_nos].text, token_atual.string);
+            //O gerador de codigo em C vai ter que iterar essa string em busca de %varname para no printf("text %d", varname);
+            arvore_sintatica[total_nos].type = CONSOLE_TEXT;
+            total_nos++;
+        }
 
     } while(token_atual.type != TOKEN_EOF);
 
